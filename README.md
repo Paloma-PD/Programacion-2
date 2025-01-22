@@ -16,4 +16,6 @@ El curso combina sesiones teóricas con laboratorios prácticos que se realizar�
 * Implementación de modelos en producción.
 * Visualización de resultados y análisis interpretativo de modelos.
 
-Al finalizar este curso, los estudiantes estarán preparados para enfrentar desafíos complejos en proyectos de aprendizaje automático y continuarán construyendo una base sólida para investigaciones avanzadas o aplicaciones profesionales en ciencia de datos.¡Prepárate para dar el siguiente paso en el apasionante mundo del Machine Learning!
+Al finalizar este curso, los estudiantes estarán preparados para enfrentar desafíos complejos en proyectos de aprendizaje automático y continuarán construyendo una base sólida para investigaciones avanzadas o aplicaciones profesionales en ciencia de datos.
+
+_¡Prepárate para dar el siguiente paso en el apasionante mundo del Machine Learning!_
