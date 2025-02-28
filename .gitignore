@@ -10,6 +10,6 @@ Ejercicio - Regresión Polinomial.ipynb
 # Dataset con la información del modelo de rendimiento de una inversión
 GME_stock.csv
 # Dataset con la información del modelo del precio de un automóvil
-imports-85.data
 car.data
-SampleData_01B-38c.nc
+# Dataset con la información de las temperaturas
+temps.csv
