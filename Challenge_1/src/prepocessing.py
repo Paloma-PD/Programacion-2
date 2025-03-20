@@ -4,23 +4,6 @@ import pandas as pd
 from typing import Optional, Tuple
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, LabelEncoder
 
-# Data path
-def data_path() -> Path:
-    """
-    Returns the location of the Banking CSV data, allowing for script executions in subfolders without worrying about the
-    relative location of the data
-
-    :return: the path to the CSV file
-    """
-    cwd = Path(__file__).parent.resolve() # Convierte la ruta relativa en absoluta, tenía conflicto con las diagonales
-    for folder in (cwd, cwd / "..", cwd / ".." / ".."):
-        data_folder = folder / "data"
-        if data_folder.exists() and data_folder.is_dir():
-            print("Data directory found in ", data_folder)
-            return data_folder / "breast-cancer-wisconsin.data"
-        else:
-            print("Data directory NOT found in ", data_folder)
-            raise Exception("Data not found")  #-- Comenté la execpción por que me marcaba error y siempre me decía data not found
 # Load dataframe
 def load_data_frame(path=None, num_samples:Optional[int]=None, random_seed: int = 42) -> pd.DataFrame:
     """"
@@ -39,7 +22,7 @@ def load_data_frame(path=None, num_samples:Optional[int]=None, random_seed: int 
     return df
 
 # Prepocessing
-def preprocessing_data(df,input_cols,target_var,treat_outliers:bool=False,treat_neg_values:bool=False,scaling:bool=False):
+def preprocessing_data(df,scaling:bool=False):
     """
     :return: a pair (X, y) where X is the data frame containing all attributes and y is the corresping series of class values
     """
