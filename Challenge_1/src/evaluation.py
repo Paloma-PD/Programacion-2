@@ -1,13 +1,20 @@
 import os
-from sklearn.metrics import accuracy_score, classification_report, roc_curve, auc, confusion_matrix
+from sklearn.metrics import accuracy_score, classification_report, roc_curve, auc, confusion_matrix, precision_score, recall_score, f1_score
 import matplotlib.pyplot as plt
 import seaborn as sns
 
 def model_evaluate(model, X_train, y_train, X_test, y_test, y_pred):
-    #Accuracy
+    # METRICS
     accuracy = accuracy_score(y_test, y_pred) * 100 # to percentage
     print(f"{model}: accuracy={accuracy:.2f} %")
+    precision = precision_score(y_test, y_pred) * 100
+    print(f'Precision: {precision:.2f} %')
+    recall = recall_score(y_test, y_pred) * 100  # Sensibilidad
+    print(f'Recall: {recall:.2f} %')
+    f1 = f1_score(y_test, y_pred) * 100
+    print(f'F1-score: {f1:.2f} %')
     report = classification_report(y_test, y_pred)
+
     
     # Graph the confusion matrix
     conf_matrix = confusion_matrix(y_test, y_pred)
