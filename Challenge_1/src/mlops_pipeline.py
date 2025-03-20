@@ -11,7 +11,9 @@ from prepocessing import load_data_frame, preprocessing_data
 # Main function
 def main():
     # Defines the directory of our file
-    df_path = "C:/Users/palom/OneDrive/Dokumen/CUCEA/2DO_SEM/Programacion-2/Challenge_1/data/breast-cancer-wisconsin.data.csv"
+    df_path = Path(__file__).parent.resolve() # Convierte la ruta relativa en absoluta, tenía conflicto con las diagonales
+    df_path = df_path.parent / 'data/breast-cancer-wisconsin.data.csv'
+    #print(df_path)
     # Load the data
     df = load_data_frame(path=df_path)
     # Preprocessing part
@@ -21,7 +23,7 @@ def main():
     X_train, X_test, y_train, y_test, model, y_pred = model_training(X=X, y=y)
     
     # Model evaluation
-    accuracy, report = model_evaluate(model, X_train, y_train, X_test, y_test, y_pred)
+    accuracy, report, plots_path = model_evaluate(model, X_train, y_train, X_test, y_test, y_pred)
 
     # Starting an experiment in MLflow
     # Establecer la carpeta base en "challenge" (subiendo un nivel desde "src")
@@ -37,10 +39,10 @@ def main():
         mlflow.log_text(report, "classification_report.txt")
         
         # Record the ROC curve as an image
-        mlflow.log_artifact("roc_curve.png")
+        mlflow.log_artifact(os.path.join(plots_path,"roc_curve.png"))
 
         # # Record the confusion matrix as an image
-        mlflow.log_artifact("confusion_matrix.png")
+        mlflow.log_artifact(os.path.join(plots_path,"confusion_matrix.png"))
         
         # Record the model
         mlflow.sklearn.log_model(model, "random_forest_model")

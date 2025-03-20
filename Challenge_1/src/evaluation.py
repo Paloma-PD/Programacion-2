@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from sklearn.metrics import accuracy_score, classification_report, roc_curve, auc, confusion_matrix, precision_score, recall_score, f1_score
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -18,7 +19,12 @@ def model_evaluate(model, X_train, y_train, X_test, y_test, y_pred):
     report = classification_report(y_test, y_pred)
     print("\n")
 
-    
+    plots_path = Path(__file__).parent.resolve() # Convierte la ruta relativa en absoluta, tenía conflicto con las diagonales
+    plots_path = plots_path.parent / 'plots'
+    if not os.path.exists(plots_path):
+        # If it doesn't exist, it will create it
+        os.makedirs(plots_path)
+
     # Graph the confusion matrix
     conf_matrix = confusion_matrix(y_test, y_pred)
     plt.figure(figsize=(6, 5))
@@ -26,7 +32,7 @@ def model_evaluate(model, X_train, y_train, X_test, y_test, y_pred):
     plt.xlabel('Predicción')
     plt.ylabel('Real')
     plt.title('Matriz de Confusión')
-    plt.savefig("confusion_matrix.png")
+    plt.savefig(os.path.join(plots_path,'confusion_matrix.png'))
     plt.close()
     
     # ROC score
@@ -43,6 +49,6 @@ def model_evaluate(model, X_train, y_train, X_test, y_test, y_pred):
     plt.title('Curva ROC')
     plt.legend(loc='lower right')
     plt.grid()
-    plt.savefig("roc_curve.png")
+    plt.savefig(os.path.join(plots_path, 'ROC_curve.png'))
     plt.close()
-    return accuracy, report
+    return accuracy, report, plots_path
