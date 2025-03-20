@@ -1,6 +1,7 @@
 import mlflow
 import mlflow.sklearn
 import os
+from pathlib import Path
 
 # import our external modules
 from evaluation import model_evaluate
@@ -23,7 +24,12 @@ def main():
     accuracy, report = model_evaluate(model, X_train, y_train, X_test, y_test, y_pred)
 
     # Starting an experiment in MLflow
+    # Establecer la carpeta base en "challenge" (subiendo un nivel desde "src")
+    cwd = Path(__file__).parent.resolve() # Convierte la ruta relativa en absoluta, tenía conflicto con las diagonales
+    cwd = cwd.parent / 'mlruns'
+    mlflow.set_tracking_uri(cwd)
     mlflow.set_experiment("Breast Cancer Wisconsin")
+
     with mlflow.start_run():
         
         # Record metrics
