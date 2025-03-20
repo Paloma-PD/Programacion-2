@@ -7,6 +7,7 @@ The first step is to clone the repository located at https://github.com/Paloma-P
 Once the repository is cloned, you will notice that the folder has a _txt_ file called _requirements_. This file contains the minimum libraries that the environment where the code will run must have. To install the libraries, you can do so using the command
 
     pip install – requirements.txt
+** To run it, remember that you must be in the directory where the file is located.
 
 Once executed and the libraries have been installed, or if applicable, it has been verified that they are present, the code will be executed, this code is located in the **src** folder. Entering this folder, you will find four .py files, which are described below:
 1. _preprocessing_: Here, the data will be loaded and preprocessed, that is, unnecessary columns will be eliminated, the independent and dependent variables will be defined, and finally the data will be scaled.
