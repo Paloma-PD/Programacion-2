@@ -13,7 +13,7 @@ def main():
     # Defines the directory of our file
     df_path = Path(__file__).parent.resolve() # Convierte la ruta relativa en absoluta, tenía conflicto con las diagonales
     df_path = df_path.parent / 'data/breast-cancer-wisconsin.data.csv'
-    #print(df_path)
+    
     # Load the data
     df = load_data_frame(path=df_path)
     # Preprocessing part
@@ -26,8 +26,8 @@ def main():
     accuracy, report, plots_path = model_evaluate(model, X_train, y_train, X_test, y_test, y_pred)
 
     # Starting an experiment in MLflow
-    # Establecer la carpeta base en "challenge" (subiendo un nivel desde "src")
-    cwd = Path(__file__).parent.resolve() # Convierte la ruta relativa en absoluta, tenía conflicto con las diagonales
+    # Set the base folder to "challenge" (up one level from "src")
+    cwd = Path(__file__).parent.resolve() # Convert relative path to absolute, had conflict with slashes
     cwd = cwd.parent / 'mlruns'
     mlflow.set_tracking_uri(cwd)
     mlflow.set_experiment("Breast Cancer Wisconsin")
