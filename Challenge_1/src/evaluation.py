@@ -5,15 +5,18 @@ import seaborn as sns
 
 def model_evaluate(model, X_train, y_train, X_test, y_test, y_pred):
     # METRICS
+    print("\n")
+    print("METRICS")
     accuracy = accuracy_score(y_test, y_pred) * 100 # to percentage
-    print(f"{model}: accuracy={accuracy:.2f} %")
+    print(f"{model}: Accuracy={accuracy:.2f} %")
     precision = precision_score(y_test, y_pred) * 100
-    print(f'Precision: {precision:.2f} %')
+    print(f'{model}: Precision: {precision:.2f} %')
     recall = recall_score(y_test, y_pred) * 100  # Sensibilidad
-    print(f'Recall: {recall:.2f} %')
+    print(f'{model}: Recall: {recall:.2f} %')
     f1 = f1_score(y_test, y_pred) * 100
-    print(f'F1-score: {f1:.2f} %')
+    print(f'{model}:F1-score: {f1:.2f} %')
     report = classification_report(y_test, y_pred)
+    print("\n")
 
     
     # Graph the confusion matrix
