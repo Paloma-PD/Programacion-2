@@ -19,3 +19,7 @@ El curso combina sesiones teóricas con laboratorios prácticos que se realizar�
 Al finalizar este curso, los estudiantes estarán preparados para enfrentar desafíos complejos en proyectos de aprendizaje automático y continuarán construyendo una base sólida para investigaciones avanzadas o aplicaciones profesionales en ciencia de datos.
 
 _¡Prepárate para dar el siguiente paso en el apasionante mundo del Machine Learning!_
+
+
+Dentro de la asignatura se realizarán tres challenges, los cuales se albergarán dentro del siguiente repositorio: https://github.com/Paloma-PD/Challenges-Progra2
+Para más detalles sobre estos, ir al link proporcionado.
